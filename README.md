@@ -1,5 +1,8 @@
 ## Run tests for a single problem
 
-```
-npm run test [folderName]
-```
+- Cd into `/exercises`
+- Run in terminal:
+
+  ```
+  npm run test [folderName]
+  ```

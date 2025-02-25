@@ -4,6 +4,9 @@
 
   Linear time complexity (O(n)): The algorithm only traverses the string once (after cleaning), making it an O(n) 
   solution, where n is the length of the cleaned string.
+
+  The two-pointer method works well when you're dealing with problems related to sorted arrays, 
+  partitioning, or palindrome checking.
 */
 
 function isPalindrome(s) {

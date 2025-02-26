@@ -42,23 +42,17 @@
 //   return Object.values(hashMap);
 // }
 
+/* SOLUTION 2 - better performance, single loop */
 function groupAnagrams(strs) {
-  const isAnagram = (str1, str2) => {
-    if (s.length !== t.length) return false;
+  let hashMap = {};
 
-    let charCount = {};
+  for (let i = 0; i < strs.length; i++) {
+    const word = strs[i];
+    const key = strs[i].split("").sort().join("");
+    hashMap[key] = [...(hashMap[key] || []), word];
+  }
 
-    for (let i = 0; i < str1.length; i++) {
-      charCount[str1[i]] = (charCount[str1[i]] || 0) + 1;
-      charCount[str2[i]] = (charCount[str2[i]] || 0) - 1;
-    }
-
-    for (const key of charCount) {
-      if (charCount[key] !== 0) return false;
-    }
-
-    return true;
-  };
+  return Object.values(hashMap);
 }
 
 module.exports = groupAnagrams;

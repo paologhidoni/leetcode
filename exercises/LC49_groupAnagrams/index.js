@@ -42,24 +42,35 @@
 //   return Object.values(hashMap);
 // }
 
-function groupAnagrams(strs) {
-  const isAnagram = (str1, str2) => {
-    if (s.length !== t.length) return false;
+/* SOLUTION 2 - better performance, single loop */
+// function groupAnagrams(strs) {
+//   let hashMap = {};
 
-    let charCount = {};
+//   for (let i = 0; i < strs.length; i++) {
+//     const word = strs[i];
+//     const key = strs[i].split("").sort().join("");
+//     hashMap[key] = [...(hashMap[key] || []), word];
+//   }
 
-    for (let i = 0; i < str1.length; i++) {
-      charCount[str1[i]] = (charCount[str1[i]] || 0) + 1;
-      charCount[str2[i]] = (charCount[str2[i]] || 0) - 1;
+//   return Object.values(hashMap);
+// }
+
+/* SOLUTION 3 - Using Map - better time complexity - average space complexity  */
+var groupAnagrams = function (strs) {
+  const hashMap = new Map();
+
+  for (const word of strs) {
+    const key = word.split("").sort().join("");
+
+    if (!hashMap.has(key)) {
+      hashMap.set(key, []);
     }
 
-    for (const key of charCount) {
-      if (charCount[key] !== 0) return false;
-    }
+    hashMap.get(key).push(word);
+  }
 
-    return true;
-  };
-}
+  return Array.from(hashMap.values());
+};
 
 module.exports = groupAnagrams;
 

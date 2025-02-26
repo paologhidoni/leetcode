@@ -48,7 +48,6 @@ function isAnagram(s, t) {
   for (let i = 0; i < s.length; i++) {
     hashMap[s[i]] = (hashMap[s[i]] || 0) + 1;
     hashMap[t[i]] = (hashMap[t[i]] || 0) - 1;
-    console.log(i, hashMap);
   }
 
   for (let key in hashMap) {

@@ -43,17 +43,34 @@
 // }
 
 /* SOLUTION 2 - better performance, single loop */
-function groupAnagrams(strs) {
-  let hashMap = {};
+// function groupAnagrams(strs) {
+//   let hashMap = {};
 
-  for (let i = 0; i < strs.length; i++) {
-    const word = strs[i];
-    const key = strs[i].split("").sort().join("");
-    hashMap[key] = [...(hashMap[key] || []), word];
+//   for (let i = 0; i < strs.length; i++) {
+//     const word = strs[i];
+//     const key = strs[i].split("").sort().join("");
+//     hashMap[key] = [...(hashMap[key] || []), word];
+//   }
+
+//   return Object.values(hashMap);
+// }
+
+/* SOLUTION 3 - Using Map - better time complexity - average space complexity  */
+var groupAnagrams = function (strs) {
+  const hashMap = new Map();
+
+  for (const word of strs) {
+    const key = word.split("").sort().join("");
+
+    if (!hashMap.has(key)) {
+      hashMap.set(key, []);
+    }
+
+    hashMap.get(key).push(word);
   }
 
-  return Object.values(hashMap);
-}
+  return Array.from(hashMap.values());
+};
 
 module.exports = groupAnagrams;
 

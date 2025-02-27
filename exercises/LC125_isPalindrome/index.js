@@ -1,3 +1,14 @@
+/*
+  Two-pointer technique: You use two pointers, startPointer and endPointer, which begin at the two ends of the 
+  string and move toward the center, checking for matching characters along the way.
+
+  Linear time complexity (O(n)): The algorithm only traverses the string once (after cleaning), making it an O(n) 
+  solution, where n is the length of the cleaned string.
+
+  The two-pointer method works well when you're dealing with problems related to sorted arrays, 
+  partitioning, or palindrome checking.
+*/
+
 function isPalindrome(s) {
   s = s.toLowerCase().replace(/[\W_]/g, "");
 
